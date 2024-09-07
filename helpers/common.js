@@ -40,7 +40,7 @@ const sendVoiceOTP = async (to, message, from = process.env.TWILIO_PHONE_NUMBER)
 };
 
 const getPlaceData = async (address) => {
-    const apiKey = "AIzaSyCAm-TZ4pv6-FFEN5jxbDBp2TV6GykZ07k";
+    const apiKey = process.env.GOOGLE_API_KEY;
     const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`);
     const data = await response.json();
 
@@ -48,7 +48,7 @@ const getPlaceData = async (address) => {
 }
 
 const getImage = async (photoreference) => {
-    const apiKey = "AIzaSyCAm-TZ4pv6-FFEN5jxbDBp2TV6GykZ07k";
+    const apiKey = process.env.GOOGLE_API_KEY;
     let path = '';
     if(photoreference == ''){
         path = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=&key=AIzaSyCAm-TZ4pv6-FFEN5jxbDBp2TV6GykZ07k';
