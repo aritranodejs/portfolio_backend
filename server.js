@@ -27,6 +27,9 @@ app.use(sanitize()); // sanitize request bodies (remove dangerous characters) eg
 const aiRoutes = require('./routes/ai');
 const contactRoutes = require('./routes/contact');
 
+app.get('/', (req, res) => {
+  res.send('Welcome to Aritra\'s Portfolio API');
+});
 app.use('/api/ai', aiRoutes);
 app.use('/api/contact', contactRoutes);
 
