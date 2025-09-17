@@ -14,7 +14,7 @@ const app = express();
 
 app.use(helmet()); // secure headers (set security-related HTTP headers)
 app.use(cors({
-  origin: ['https://aritranodejs.github.io/portfolio', 'http://localhost:3000']
+  origin: ['https://aritranodejs.github.io', 'http://localhost:3000']
 })); // cors (cross-origin resource sharing) prevents cross-origin requests
 app.use(express.json()); // parse json bodies (parse the request body as JSON)
 app.use(express.urlencoded({ extended: true })); // parse urlencoded bodies (parse the request body as URL encoded)
