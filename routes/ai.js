@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
     const userInput = req.body?.input || '';
 
     const payload = {
-      model: "llama3-8b-8192",
+      model: "openai/gpt-oss-20b",
       messages: [
         { role: "system", content: "You are Aritra's helpful portfolio assistant. Keep answers concise and friendly." },
         { role: "user", content: userInput },
@@ -29,13 +29,15 @@ router.post('/', async (req, res) => {
           Authorization: `Bearer ${apiKey}`,
           "Content-Type": "application/json",
         },
-        timeout: 15000,
+        // timeout: 15000,
       }
     );
 
+    console.log("aiResponse.data", aiResponse.data);
+
     res.json({ message: aiResponse.data.choices?.[0]?.message?.content || '' });
   } catch (err) {
-    res.status(500).json({ error: "AI request failed" });
+    res.status(500).json({ error: "AI request failed", details: err.message });
   }
 });
 
